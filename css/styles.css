@@ -12056,27 +12056,10 @@ textarea.form-control-lg {
 }
 
 /*# sourceMappingURL=bootstrap.css.map */
-
-.card::after {
-  content: ''; /* Ensure there's a pseudo-element to display */
-  display: block; /* Make it visible */
-  transform: rotateZ(-9deg);
-  transition: transform 0.25s; /* Pseudo-element transition */
-}
-
-.card:hover {
-  transform: rotate(8deg) scale(1.1); /* Combine transforms in a single property */
-  transition: transform 0.5s; /* Define only transform-specific transition */
-}
-
+  
 .card:not(:hover) {
   transform: scale(calc(1 / 1.1)); /* Correct scaling syntax */
   transition: transform 0.5s;
-}
-
-.card:active {
-  transform: rotate(-9deg); /* Keeps rotation consistent when clicked */
-  transition: transform 1s; /* Smooth transition for active state */
 }
 
 /* Body styling */
@@ -12111,12 +12094,13 @@ body {
 /* Card hover effect */
 .card:hover {
   transform: scale(1.1);
+  transform: rotate(8deg);
   background-color: rgba(255, 255, 255, 0.2); /* Glow on hover */
 }
 
 /* Color spectrum animation */
 .christmas-spectrum {
-  animation: christmas-colors 4s linear infinite, glow-effect 2s ease-in-out infinite alternate;
+  animation: christmas-colors 12s linear infinite, glow-effect 2s ease-in-out infinite alternate;
 }
 
 /* Color spectrum animation */
@@ -12170,6 +12154,7 @@ body {
   box-shadow: none; /* Remove glow */
   color: #ddd; /* Dimmed text color */
   transform: scale(1); /* No hover scaling */
+  transform: rotate(-3deg);
   cursor: default; /* No pointer cursor */
   animation: none; /* Remove animations */
 }
