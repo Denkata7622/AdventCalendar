@@ -12078,3 +12078,67 @@ textarea.form-control-lg {
   transform: rotate(-9deg); /* Keeps rotation consistent when clicked */
   transition: transform 1s; /* Smooth transition for active state */
 }
+
+
+body {
+  background: radial-gradient(circle, #002b5c, #000); /* A starry night background */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.christmas-spectrum {
+  display: inline-block;
+  padding: 20px 40px;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  border: 5px solid white;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  background-color: red; /* Initial color */
+  animation: christmas-colors 4s linear infinite, glow-effect 2s ease-in-out infinite alternate;
+}
+
+/* Color Spectrum Animation */
+@keyframes christmas-colors {
+  0% {
+    background-color: red; /* Red for Christmas */
+    color: white; /* White text */
+    border-color: gold;
+  }
+  25% {
+    background-color: green; /* Green for Christmas trees */
+    color: gold; /* Gold text */
+    border-color: white;
+  }
+  50% {
+    background-color: gold; /* Golden lights */
+    color: red; /* Red text */
+    border-color: green;
+  }
+  75% {
+    background-color: white; /* Snowy white */
+    color: green; /* Green text */
+    border-color: red;
+  }
+  100% {
+    background-color: red;
+    color: white;
+    border-color: gold;
+  }
+}
+
+/* Glowing Effect */
+@keyframes glow-effect {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
+  }
+}
