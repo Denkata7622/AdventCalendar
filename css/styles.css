@@ -12079,66 +12079,97 @@ textarea.form-control-lg {
   transition: transform 1s; /* Smooth transition for active state */
 }
 
-
+/* Body styling */
 body {
-  background: radial-gradient(circle, #002b5c, #000); /* A starry night background */
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: linear-gradient(to bottom, #002b5c, #000); /* Festive night background */
+  color: white;
+  font-family: 'Varela Round', sans-serif;
   margin: 0;
-  font-family: 'Arial', sans-serif;
 }
 
-.christmas-spectrum {
-  display: inline-block;
-  padding: 20px 40px;
-  font-size: 36px;
-  font-weight: bold;
+/* Header styling */
+.header {
   text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
   color: white;
-  border: 5px solid white;
+  border-bottom: 5px solid #fff;
+}
+
+/* Styling for cards */
+.card {
+  background-color: rgba(255, 255, 255, 0.1); /* Transparent for a frosty effect */
+  color: white;
+  border: 2px solid #fff;
   border-radius: 15px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-  background-color: red; /* Initial color */
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+/* Card hover effect */
+.card:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.2); /* Glow on hover */
+}
+
+/* Color spectrum animation */
+.christmas-spectrum {
   animation: christmas-colors 4s linear infinite, glow-effect 2s ease-in-out infinite alternate;
 }
 
-/* Color Spectrum Animation */
+/* Color spectrum animation */
 @keyframes christmas-colors {
   0% {
-    background-color: red; /* Red for Christmas */
-    color: white; /* White text */
-    border-color: gold;
+      color: red;
+      background-color: #fff; /* White */
   }
   25% {
-    background-color: green; /* Green for Christmas trees */
-    color: gold; /* Gold text */
-    border-color: white;
+      color: green;
+      background-color: red;
   }
   50% {
-    background-color: gold; /* Golden lights */
-    color: red; /* Red text */
-    border-color: green;
+      color: gold;
+      background-color: green;
   }
   75% {
-    background-color: white; /* Snowy white */
-    color: green; /* Green text */
-    border-color: red;
+      color: white;
+      background-color: gold;
   }
   100% {
-    background-color: red;
-    color: white;
-    border-color: gold;
+      color: red;
+      background-color: white;
   }
 }
 
-/* Glowing Effect */
+/* Glow animation */
 @keyframes glow-effect {
   0% {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
   }
   100% {
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
   }
+}
+
+/* Card layout adjustments */
+.container {
+  margin-top: 20px;
+}
+
+.card h1 {
+  margin: 0;
+  font-size: 2rem;
+  user-select: none;
+}
+
+/* Opened days styling */
+.card.opened {
+  background-color: rgba(255, 255, 255, 0.3); /* Dimmer background */
+  box-shadow: none; /* Remove glow */
+  color: #ddd; /* Dimmed text color */
+  transform: scale(1); /* No hover scaling */
+  cursor: default; /* No pointer cursor */
+  animation: none; /* Remove animations */
 }
