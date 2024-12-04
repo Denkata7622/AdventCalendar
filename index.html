@@ -14,156 +14,316 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
+    <style>
+        /* Modal Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Transparent dark background */
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background: rgba(255, 255, 255, 0.64); /* White with transparency */
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* Close Button */
+        .close-btn {
+            background-color: red;
+            color: white;
+            font-size: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background-color: darkred;
+        }
+    </style>
 </head>
 <body>
     <div class="d-flex justify-content-center text-center">
-    <header class="header bg-danger w-100">
-        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-            <div class="d-flex justify-content-center text-center">
-                <h1 class="h1">STEM Advent Calendar za Ani Pavlova</h1>
+        <header class="header bg-danger w-100">
+            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                <div class="d-flex justify-content-center text-center">
+                    <h1 class="h1">STEM Advent Calendar za Ani Pavlova</h1>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
     </div>
     <div class="container px-4 px-lg-5">
-    <div class="row text-center">
-        <div class="col mt-4">
-            <div class="card christmas-spectrum">
-                <h1 class="my-4">1</h1>
+        <div class="row text-center">
+            <!-- Days 1 to 8 -->
+            <div class="col mt-4">
+                <div class="card christmas-spectrum" data-day="1">
+                    <h1 class="my-4">1</h1>
+                </div>
             </div>
-        </div>
-        <div class="col mt-4">
-            <div class="card christmas-spectrum">
-                <h1 class="my-4">2</h1>
+            <div class="col mt-4">
+                <div class="card christmas-spectrum" data-day="2">
+                    <h1 class="my-4">2</h1>
+                </div>
             </div>
-        </div>
-        <div class="col mt-4">
-            <div class="card christmas-spectrum">
-                <h1 class="my-4">3</h1>
+            <div class="col mt-4">
+                <div class="card christmas-spectrum" data-day="3">
+                    <h1 class="my-4">3</h1>
+                </div>
             </div>
-        </div>
-        <div class="col mt-4">
-            <div class="card christmas-spectrum">
-                <h1 class="my-4">4</h1>
+            <div class="col mt-4">
+                <div class="card christmas-spectrum" data-day="4">
+                    <h1 class="my-4">4</h1>
+                </div>
             </div>
-        </div>
-        <div class="col mt-4">
-            <div class="card christmas-spectrum">
-                <h1 class="my-4">5</h1>
+            <div class="col mt-4">
+                <div class="card christmas-spectrum" data-day="5">
+                    <h1 class="my-4">5</h1>
+                </div>
             </div>
-        </div>
-        <div class="col mt-4">
-            <div class="card christmas-spectrum">
-                <h1 class="my-4">6</h1>
+            <div class="col mt-4">
+                <div class="card christmas-spectrum" data-day="6">
+                    <h1 class="my-4">6</h1>
+                </div>
             </div>
-        </div>
-        <div class="col mt-4">
-            <div class="card christmas-spectrum">
-                <h1 class="my-4">7</h1>
+            <div class="col mt-4">
+                <div class="card christmas-spectrum" data-day="7">
+                    <h1 class="my-4">7</h1>
+                </div>
             </div>
-        </div>
         </div>
 
         <div class="row text-center">
+            <!-- Days 8 to 14 -->
             <div class="col mt-4">
-                <div class="card christmas-spectrum">
+                <div class="card christmas-spectrum" data-day="8">
                     <h1 class="my-4">8</h1>
                 </div>
             </div>
             <div class="col mt-4">
-                <div class="card christmas-spectrum">
+                <div class="card christmas-spectrum" data-day="9">
                     <h1 class="my-4">9</h1>
                 </div>
             </div>
             <div class="col mt-4">
-                <div class="card christmas-spectrum">
+                <div class="card christmas-spectrum" data-day="10">
                     <h1 class="my-4">10</h1>
                 </div>
             </div>
             <div class="col mt-4">
-                <div class="card christmas-spectrum">
+                <div class="card christmas-spectrum" data-day="11">
                     <h1 class="my-4">11</h1>
                 </div>
             </div>
             <div class="col mt-4">
-                <div class="card christmas-spectrum">
+                <div class="card christmas-spectrum" data-day="12">
                     <h1 class="my-4">12</h1>
                 </div>
             </div>
             <div class="col mt-4">
-                <div class="card christmas-spectrum">
+                <div class="card christmas-spectrum" data-day="13">
                     <h1 class="my-4">13</h1>
                 </div>
             </div>
             <div class="col mt-4">
-                <div class="card christmas-spectrum">
+                <div class="card christmas-spectrum" data-day="14">
                     <h1 class="my-4">14</h1>
                 </div>
             </div>
-        </div>        
-        
+        </div>
+
         <div class="row text-center">
+            <!-- Days 15 to 21 -->
             <div class="col mt-4">
-                <div class="card christmas-spectrum">
+                <div class="card christmas-spectrum" data-day="15">
                     <h1 class="my-4">15</h1>
                 </div>
             </div>
             <div class="col mt-4">
-                <div class="card christmas-spectrum">
+                <div class="card christmas-spectrum" data-day="16">
                     <h1 class="my-4">16</h1>
                 </div>
             </div>
             <div class="col mt-4">
-                <div class="card christmas-spectrum">
+                <div class="card christmas-spectrum" data-day="17">
                     <h1 class="my-4">17</h1>
                 </div>
             </div>
             <div class="col mt-4">
-                <div class="card christmas-spectrum">
+                <div class="card christmas-spectrum" data-day="18">
                     <h1 class="my-4">18</h1>
                 </div>
             </div>
             <div class="col mt-4">
-                <div class="card christmas-spectrum">
+                <div class="card christmas-spectrum" data-day="19">
                     <h1 class="my-4">19</h1>
                 </div>
             </div>
             <div class="col mt-4">
-                <div class="card christmas-spectrum">
+                <div class="card christmas-spectrum" data-day="20">
                     <h1 class="my-4">20</h1>
                 </div>
             </div>
             <div class="col mt-4">
-                <div class="card christmas-spectrum">
+                <div class="card christmas-spectrum" data-day="21">
                     <h1 class="my-4">21</h1>
                 </div>
             </div>
         </div>
 
         <div class="row text-center">
-            <div class="col-2 mt-4">
-                <div class="card christmas-spectrum">
-                    <h1 class="my-4">22</h1>
-                </div>
+        <div class="col-2 mt-4">
+            <div class="card christmas-spectrum" data-day="22">
+                <h1 class="my-4">22</h1>
             </div>
-            <div class="col-2 mt-4">
-                <div class="card christmas-spectrum">
-                    <h1 class="my-4">23</h1>
-                </div>
+        </div>
+        <div class="col-2 mt-4">
+            <div class="card christmas-spectrum" data-day="23">
+                <h1 class="my-4">23</h1>
             </div>
-            <div class="col-2 mt-4">
-                <div class="card christmas-spectrum">
-                    <h1 class="my-4">24</h1>
-                </div>
-            </div>            
-            <div class="col-2 mt-4">
-                <div class="card christmas-spectrum">
-                    <h1 class="my-4">25</h1>
-                </div>
+        </div>
+        <div class="col-2 mt-4">
+            <div class="card christmas-spectrum" data-day="24">
+                <h1 class="my-4">24</h1>
             </div>
         </div>
         </div>
-</div>
-</div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <div id="modal-content-body">
+                <!-- Dynamic content will be injected here -->
+            </div>
+            <button class="close-btn" onclick="closeModal()">X</button>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.card');
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalContent = document.getElementById('modal-content-body');
+    const closeModalButton = document.querySelector('.close-btn');
+
+    // Define content for each day
+    const challenges = {
+        1: {
+            title: "Quiz 1",
+            content: `
+                <p>Question 1: What is 2 + 2?</p>
+                <ul>
+                    <li>A. 3</li>
+                    <li>B. 4</li>
+                    <li>C. 5</li>
+                </ul>
+                <p>Question 2: What is the capital of France?</p>
+                <ul>
+                    <li>A. Berlin</li>
+                    <li>B. Madrid</li>
+                    <li>C. Paris</li>
+                </ul>
+            `
+        },
+        2: {
+            title: "Fun Fact 1",
+            content: "<p>Did you know? The first Christmas card was sent in 1843!</p>"
+        },
+        3: {
+            title: "Challenge 1",
+            content: "<p>Try to make a paper snowflake!</p>"
+        },
+        4: {
+            title: "Quiz 2",
+            content: `
+                <p>Question 1: What is the smallest planet in our solar system?</p>
+                <ul>
+                    <li>A. Earth</li>
+                    <li>B. Mercury</li>
+                    <li>C. Mars</li>
+                </ul>
+                <p>Question 2: What is the tallest mountain on Earth?</p>
+                <ul>
+                    <li>A. Mount Kilimanjaro</li>
+                    <li>B. Mount Everest</li>
+                    <li>C. K2</li>
+                </ul>
+            `
+        },
+        5: {
+            title: "Fun Fact 2",
+            content: "<p>Did you know? Christmas is celebrated in more than 160 countries!</p>"
+        },
+        6: {
+            title: "Challenge 2",
+            content: "<p>Try making Christmas cookies and decorate them!</p>"
+        },
+        7: {
+            title: "Quiz 3",
+            content: `
+                <p>Question 1: What is the largest ocean on Earth?</p>
+                <ul>
+                    <li>A. Atlantic Ocean</li>
+                    <li>B. Indian Ocean</li>
+                    <li>C. Pacific Ocean</li>
+                </ul>
+                <p>Question 2: Who developed the theory of relativity?</p>
+                <ul>
+                    <li>A. Isaac Newton</li>
+                    <li>B. Albert Einstein</li>
+                    <li>C. Galileo Galilei</li>
+                </ul>
+            `
+        },
+        8: {
+            title: "Fun Fact 3",
+            content: "<p>The world's first artificial Christmas tree was made of dyed goose feathers!</p>"
+        }
+    };
+
+    // Open the modal when clicking a card
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const day = parseInt(card.querySelector('h1').textContent);
+            const challenge = challenges[day];
+
+            if (challenge) {
+                modalContent.innerHTML = `
+                    <h2>${challenge.title}</h2>
+                    ${challenge.content}
+                `;
+                modalOverlay.style.display = 'flex'; // Show the modal
+            }
+        });
+    });
+
+    // Close the modal
+    closeModalButton.addEventListener('click', () => {
+        modalOverlay.style.display = 'none'; // Hide the modal
+    });
+
+    // Close the modal if the user clicks outside the modal content
+    modalOverlay.addEventListener('click', (event) => {
+        if (event.target === modalOverlay) {
+            modalOverlay.style.display = 'none'; // Hide the modal if clicked outside
+        }
+    });
+});
+    </script>
 </body>
 </html>
