@@ -43,18 +43,24 @@
 
         /* Close Button */
         .close-btn {
-            background-color: red;
-            color: white;
-            font-size: 20px;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            background-color: red;         /* Red background color */
+            color: white;                  /* White text color */
+            font-size: 20px;               /* Font size */
+            padding: 10px;                 /* Padding around the text */
+            border: none;                  /* Remove default border */
+            border-radius: 50%;            /* Round button */
+            cursor: pointer;              /* Change cursor to pointer on hover */
+            position: absolute;            /* Position it absolutely inside its parent */
+            top: 10px;                     /* Position it 10px from the top */
+            right: 10px;                   /* Position it 10px from the right */
+            z-index: 10;                   /* Ensure the button is above other content */
+            transition: background-color 0.3s ease; /* Smooth transition for background color */
         }
 
         .close-btn:hover {
-            background-color: darkred;
+            background-color: darkred;     /* Darker red color on hover */
         }
+
     </style>
 </head>
 <body>
@@ -210,7 +216,7 @@
             <div id="modal-content-body">
                 <!-- Dynamic content will be injected here -->
             </div>
-            <button class="close-btn" onclick="closeModal()">X</button>
+            <div class="close-btn" onclick="closeModal()"></div>
         </div>
     </div>
 
@@ -277,11 +283,9 @@
             title: "Quiz 3",
             content: `
                 <p>Question 1: What is the largest ocean on Earth?</p>
-                <ul>
-                    <li>A. Atlantic Ocean</li>
-                    <li>B. Indian Ocean</li>
-                    <li>C. Pacific Ocean</li>
-                </ul>
+                    <button class="w-100 rounded-4 my-2 py-2 bg-danger">A. Atlantic Ocean</button>
+                    <button class="w-100 rounded-4 my-2 py-2 bs-yellow">B. Indian Ocean</button>
+                    <button class="w-100 rounded-4 my-2 py-2 bg-success">C. Pacific Ocean</button>
                 <p>Question 2: Who developed the theory of relativity?</p>
                 <ul>
                     <li>A. Isaac Newton</li>
