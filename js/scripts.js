@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.card');
+    const unlockAll = document.querySelectorAll('.admin-button'); 
     const modalOverlay = document.getElementById('modal-overlay');
     const modalContent = document.getElementById('modal-content-body');
     const closeModalButton = document.querySelector('.close-btn');
@@ -85,15 +86,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const date = new Date();
     const tempdate = date.getDate();
-    function unlockAll(){
-        tempdate = 30;
-    }
+
+    let isunlocked = false;
+    // Add event listener to each admin button
+    unlockAll.forEach(adminButton => {
+        adminButton.addEventListener('click', () => {
+            // Change the isunlocked to the other state
+            isunlocked = !isunlocked;
+
+            if (isunlocked) {
+                adminButton.classList.remove('btn-success');
+                adminButton.classList.add('btn-primary');
+            } else {
+                adminButton.classList.remove('btn-primary');
+                adminButton.classList.add('btn-success');
+            }
+        });
+    });
 
 // Add click event listener to each card
 cards.forEach(card => {
     card.addEventListener('click', () => {
         const day = parseInt(card.querySelector('h1').textContent); // Get the day number
-        if(day <= tempdate){
+        if(isunlocked){
         const challenge = challenges[day]; // Get the challenge for the day
 
         if (challenge) {
@@ -125,8 +140,39 @@ cards.forEach(card => {
         } else {
             console.warn(`No challenge found for day ${day}`);
         }
+        }else if(day <= tempdate){const challenge = challenges[day]; // Get the challenge for the day
+
+            if (challenge) {
+                // Generate content based on challenge type
+                let content = "";
+                switch (challenge.type) {
+                    case "quiz":
+                        content = generateQuizContent(challenge.data);
+                        break;
+                    case "fact":
+                        content = generateFactContent(challenge.data);
+                        break;
+                    case "project":
+                        content = generateProjectContent(challenge.data);
+                        break;
+                }
+    
+                // Insert content into modal
+                modalContent.innerHTML = content;
+    
+                // Check if the card is already opened
+                if (!card.classList.contains('opened')) {
+                    card.classList.remove('christmas-spectrum'); // Remove initial class
+                    card.classList.add('opened'); // Mark the card as opened
+                }
+    
+                // Show the modal overlay
+                modalOverlay.style.display = 'flex';
+            } else {
+                console.warn(`No challenge found for day ${day}`);
+            }
         }else{
-            alert("This node will be available another day");
+            alert("Not available today");
         }
     });
 });
