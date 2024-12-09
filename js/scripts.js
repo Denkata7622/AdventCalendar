@@ -84,10 +84,14 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
+
 // Add click event listener to each card
 cards.forEach(card => {
     card.addEventListener('click', () => {
+        const date = new Date();
+        const tempdate = date.getDate();
         const day = parseInt(card.querySelector('h1').textContent); // Get the day number
+        if(day <= tempdate){
         const challenge = challenges[day]; // Get the challenge for the day
 
         if (challenge) {
@@ -118,6 +122,7 @@ cards.forEach(card => {
             modalOverlay.style.display = 'flex';
         } else {
             console.warn(`No challenge found for day ${day}`);
+        }
         }
     });
 });
