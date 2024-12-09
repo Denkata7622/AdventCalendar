@@ -123,6 +123,8 @@ cards.forEach(card => {
         } else {
             console.warn(`No challenge found for day ${day}`);
         }
+        }else{
+            alert("This node will be available another day");
         }
     });
 });
