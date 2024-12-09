@@ -297,21 +297,39 @@
         8: {
             title: "Fun Fact 3",
             content: "<p>The world's first artificial Christmas tree was made of dyed goose feathers!</p>"
-        }
+        },
+        9: {
+            title: "Fun Fact 3",
+            content: "<p>The world's first artificial Christmas tree was made of dyed goose feathers!</p>"
+        },
+        10: {
+            title: "Fun Fact 3",
+            content: "<p>The world's first artificial Christmas tree was made of dyed goose feathers!</p>"
+        },
+        11: {
+            title: "Fun Fact 3",
+            content: "<p>The world's first artificial Christmas tree was made of dyed goose feathers!</p>"
+        },
+        12: {
+            title: "Fun Fact 3",
+            content: "<p>The world's first artificial Christmas tree was made of dyed goose feathers!</p>"
+        },
     };
-
+    
+    const date = new Date();
+    const currentday = date.getDate();
     // Open the modal when clicking a card
     cards.forEach(card => {
         card.addEventListener('click', () => {
             const day = parseInt(card.querySelector('h1').textContent);
+            if(day <= currentday){
             const challenge = challenges[day];
-
             if (challenge) {
                 modalContent.innerHTML = `
-                    <h2>${challenge.title}</h2>
-                    ${challenge.content}
-                `;
+                <h2>${challenge.title}</h2>
+                ${challenge.content}`;
                 modalOverlay.style.display = 'flex'; // Show the modal
+            }
             }
         });
     });
