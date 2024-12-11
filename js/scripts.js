@@ -184,17 +184,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to generate quiz content
     function generateQuizContent(data) {
         return `
-            <p>${data.question}</p>
-            <button class="w-100 rounded-4 my-2 py-2 bg-danger">A. ${data.answer1}</button>
-            <button class="w-100 rounded-4 my-2 py-2 bg-warning">B. ${data.answer2}</button>
-            <button class="w-100 rounded-4 my-2 py-2 bg-success">C. ${data.answer3}</button>
+            <div style="user-select: none;">
+                <p>${data.question}</p>
+                <button class="btn w-100 rounded-4 my-2 py-2 btn-light border-4 border-custom">A. ${data.answer1}</button>
+                <button class="btn w-100 rounded-4 my-2 py-2 btn-light border-4 border-custom">B. ${data.answer2}</button>
+                <button class="btn w-100 rounded-4 my-2 py-2 btn-light border-4 border-custom">C. ${data.answer3}</button>
+            </div>
         `;
     }
 
     // Function to generate fact content
     function generateFactContent(data) {
         return `
-            <div class="text-center">   
+            <div class="text-center" style="user-select: none;">   
                 <p>${data.text}</p>
                 <img src="${data.picture}" alt="Fun Fact Image" class="img-fluid rounded-4 my-3"
             </div>
@@ -205,8 +207,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to generate project content
     function generateProjectContent(data) {
         return `
-            <h3>${data.title}</h3>
-            <p>${data.description}</p>
+            <div style="user-select: none;">
+                <h3>${data.title}</h3>
+                <p>${data.description}</p>
+            </div>
         `;
     }
     const date = new Date();
@@ -220,11 +224,11 @@ document.addEventListener('DOMContentLoaded', () => {
             isunlocked = !isunlocked;
 
             if (isunlocked) {
-                adminButton.classList.remove('btn-success');
-                adminButton.classList.add('btn-primary');
-            } else {
-                adminButton.classList.remove('btn-primary');
                 adminButton.classList.add('btn-success');
+                adminButton.classList.remove('btn-danger');
+            } else {
+                adminButton.classList.add('btn-danger');
+                adminButton.classList.remove('btn-success');
             }
         });
     });

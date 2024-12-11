@@ -12064,7 +12064,6 @@ textarea.form-control-lg {
 
 /* Body styling */
 body {
-  background-image: url(/assets/img/green-christmas-bg.jpg); /* Festive night background */
   font-family: 'Varela Round', sans-serif;
   margin: 0;
 }
@@ -12073,8 +12072,8 @@ body {
 .header {
   text-align: center;
   font-size: 2rem;
-  font-weight: bold;
   color: white;
+  font-weight: bold;
   border-bottom: 5px solid #fff;
 }
 
@@ -12149,11 +12148,15 @@ body {
 
 /* Opened days styling */
 .card.opened {
-  background-color: rgba(255, 255, 255, 0.3); /* Dimmer background */
+  background-color: rgba(163, 163, 163, 0.904); /* Dimmer background */
   box-shadow: none; /* Remove glow */
   color: #ddd; /* Dimmed text color */
   transform: scale(1); /* No hover scaling */
   transform: rotate(-3deg);
   cursor: default; /* No pointer cursor */
   animation: none; /* Remove animations */
+}
+
+.border-custom {
+  border-color: rgba(160, 160, 160, 0.9); /* Dimmer background */
 }
