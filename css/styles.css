@@ -12064,8 +12064,7 @@ textarea.form-control-lg {
 
 /* Body styling */
 body {
-  background: linear-gradient(to bottom, #002b5c, #000); /* Festive night background */
-  color: white;
+  background-image: url(/assets/img/green-christmas-bg.jpg); /* Festive night background */
   font-family: 'Varela Round', sans-serif;
   margin: 0;
 }

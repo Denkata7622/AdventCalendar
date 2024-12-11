@@ -43,10 +43,136 @@ document.addEventListener('DOMContentLoaded', () => {
             type: "fact", 
             data: { 
                 picture: "https://via.placeholder.com/150", 
-                text: "Christmas is celebrated in more than 160 countries!" 
+                text: "92% of boys and 97% of girls will lose interest in STEM if they are not immersed before 5th grade." 
             }
         },
         6: { 
+            type: "project", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+            }
+        },
+        7: { 
+            type: "quiz", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+            }
+        },
+        8: { 
+            type: "fact", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                text: "In the United States, there are more employment opportunities for skilled scientists than there are applicants to fill them." 
+            }
+        },
+        9: { 
+            type: "project", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+            }
+        },
+        10: { 
+            type: "quiz", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+            }
+        },
+        11: { 
+            type: "fact", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                text: " A third of the world’s population has never used a phone." 
+            }
+        },
+        12: { 
+            type: "project", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+            }
+        },
+        13: { 
+            type: "quiz", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+            }
+        },
+        14: { 
+            type: "fact", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                text: "Steve Wozniak and Steve Jobs, who co-founded Apple, originally achieved fame as teenagers by developing the video game named 'Breakout'" 
+            }
+        },
+        15: { 
+            type: "project", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+            }
+        },
+        16: { 
+            type: "quiz", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+            }
+        },
+        17: { 
+            type: "fact", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                text: "Pluto was discovered in 1930, but its cycle around the Sun has not yet finished since a Plutonian year is 247.68 times longer than an Earth year." 
+            }
+        },
+        18: { 
+            type: "project", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+            }
+        },
+        19: { 
+            type: "quiz", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+            }
+        },
+        20: { 
+            type: "fact", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                text: "More than half of the world’s oxygen is produced by plankton, seaweed, and other photosynthesizers." 
+            }
+        },
+        21: { 
+            type: "project", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+            }
+        },
+        22: { 
+            type: "quiz", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+            }
+        },
+        23: { 
+            type: "fact", 
+            data: { 
+                title: "Decorate Christmas Cookies", 
+                text: "The Pigeon Post: Before email, Charles Darwin relied on a unique communication method: carrier pigeons! These feathered messengers helped him stay connected with fellow scientists across vast distances." 
+            }
+        },
+        24: { 
             type: "project", 
             data: { 
                 title: "Decorate Christmas Cookies", 
@@ -68,8 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to generate fact content
     function generateFactContent(data) {
         return `
-            <div class="text-center">
-                     onerror="this.src='https://via.placeholder.com/300'" />
+            <div class="text-center">   
                 <p>${data.text}</p>
                 <img src="${data.picture}" alt="Fun Fact Image" class="img-fluid rounded-4 my-3"
             </div>
