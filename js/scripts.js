@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const challenges = {
         1: { 
             type: "quiz", 
-            data: {
+            data: { 
                 question: "What is the largest ocean on Earth?", 
                 answer1: "Atlantic Ocean", 
                 answer2: "Indian Ocean", 
@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 answer22: "Sup",
                 answer23: "Hello",
                 rightAnswer2: "Hello",
+                question3: "What is the largest ocean on Earth?", 
+                answer31: "Atlantic Ocean", 
+                answer32: "Indian Ocean", 
+                answer33: "Pacific Ocean",
+                rightAnswer3: "Atlantic Ocean",
                 progress: 0
             }
         },
@@ -286,7 +291,16 @@ modalContent.addEventListener('click', (event) => {
 
                 // Final feedback message
                 feedbackMessage.textContent = `Congratulations! You finished this quiz with ${wrongAttempts} wrong attempts.`;
-                feedbackMessage.className = 'feedback-message-right text-success text-center w-50 mt-2 fade-in-out';                
+                feedbackMessage.className = 'feedback-message-right text-success text-center w-50 mt-2 fade-in-out';     
+
+                challenges[dey].data.question = challenges[dey].data.question3;
+                challenges[dey].data.answer1 = challenges[dey].data.answer31;
+                challenges[dey].data.answer2 = challenges[dey].data.answer32;
+                challenges[dey].data.answer3 = challenges[dey].data.answer33;
+                challenges[dey].data.rightAnswer = challenges[dey].data.rightAnswer3;
+                challenges[dey].data.progress = 0;
+                rightAnswers = 0;
+           
 
                 setTimeout(() => { closeModal(); }, 3000)
             } else {
