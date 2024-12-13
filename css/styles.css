@@ -12161,7 +12161,7 @@ body {
   border-color: rgba(160, 160, 160, 0.9); /* Dimmer background */
 }
 
-.feedback-message {
+.feedback-message-wrong {
   top: -3.5rem;
   position: absolute;
   z-index: 10;
@@ -12174,6 +12174,19 @@ body {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.feedback-message.fade-in-out {
+.feedback-message-right {
+  top: -6.5rem;
+  position: absolute;
+  z-index: 10;
+  padding: 8px 16px;
+  border: 1px solid var(--bs-green);
+  border-radius: 5px;
+  background-color: rgba(0, 255, 0, 0.1);
+  color: green;
+  font-weight: bold;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-message-wrong.fade-in-out .feedback-message-right.fade-in-out{
     opacity: 1;
 }

@@ -9,19 +9,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const challenges = {
         1: { 
             type: "quiz", 
-            data: { 
-                day: 1,
+            data: {
                 question: "What is the largest ocean on Earth?", 
                 answer1: "Atlantic Ocean", 
                 answer2: "Indian Ocean", 
                 answer3: "Pacific Ocean",
-                rightAnswer: "Atlantic Ocean"
+                rightAnswer: "Atlantic Ocean",
+                question2: "Hello",
+                answer21: "Hi",
+                answer22: "Sup",
+                answer23: "Hello",
+                rightAnswer2: "Hello",
+                progress: 0
             }
         },
         2: { 
             type: "fact", 
             data: {
-                day: 1,
                 picture: "assets/img/download.jpeg",
                 text: "Did you know? The first Christmas card was sent in 1843!" 
             }
@@ -29,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
         3: { 
             type: "project", 
             data: { 
-                day: 1,
                 title: "Make a Paper Snowflake", 
                 description: "Fold paper into a triangle and cut shapes along the edges. Unfold to reveal your snowflake!" 
             }
@@ -37,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
         4: { 
             type: "quiz", 
             data: { 
-                day: 1,
                 question: "Who developed the theory of relativity?", 
                 answer1: "Isaac Newton", 
                 answer2: "Albert Einstein", 
@@ -48,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
         5: { 
             type: "fact", 
             data: { 
-                day: 1,
                 picture: "assets/img/download.jpeg",
                 text: "92% of boys and 97% of girls will lose interest in STEM if they are not immersed before 5th grade." 
             }
@@ -56,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
         6: { 
             type: "project", 
             data: { 
-                day: 1,
                 title: "Decorate Christmas Cookies", 
                 description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
             }
@@ -64,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         7: { 
             type: "quiz", 
             data: {
-                day: 1,
                 title: "Decorate Christmas Cookies", 
                 description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
             }
@@ -72,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
         8: { 
             type: "fact", 
             data: { 
-                day: 1,
                 title: "Decorate Christmas Cookies", 
                 text: "In the United States, there are more employment opportunities for skilled scientists than there are applicants to fill them." 
             }
@@ -80,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
         9: { 
             type: "project", 
             data: {
-                day: 1,
                 title: "Decorate Christmas Cookies", 
                 description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
             }
@@ -88,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
         10: { 
             type: "quiz", 
             data: {
-                day: 1,
                 title: "Decorate Christmas Cookies", 
                 description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
             }
@@ -96,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
         11: { 
             type: "fact", 
             data: {
-                day: 1,
                 title: "Decorate Christmas Cookies", 
                 text: " A third of the world’s population has never used a phone." 
             }
@@ -197,14 +192,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to generate quiz content
     function generateQuizContent(data) {
         return `
-            <div style="user-select: none;">
+            <div id="quiz" style="user-select: none;">
                 <h2 class="fw-bold">Day ${dey}</h2>
                 <p class="h5 mt-3 mb-4">${data.question}</p>
                 <button class="btn w-100 rounded-4 my-2 py-2 btn-light border-4 border-custom answer" data-answer="${data.answer1}">A. ${data.answer1}</button>
                 <button class="btn w-100 rounded-4 my-2 py-2 btn-light border-4 border-custom answer" data-answer="${data.answer2}">B. ${data.answer2}</button>
                 <button class="btn w-100 rounded-4 my-2 py-2 btn-light border-4 border-custom answer" data-answer="${data.answer3}">C. ${data.answer3}</button>
                 <div class="progress mt-3 mb-2 w-75 mx-auto">
-                    <div class="progress-bar w-0" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar progress-bar-animated" style="width:${data.progress}%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
         `;
@@ -253,47 +248,85 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+// Variables to track progress
+let rightAnswers = 0;
+let wrongAttempts = 0;
 
 // Add event listeners to each answer button dynamically
 modalContent.addEventListener('click', (event) => {
     if (event.target.classList.contains('answer')) {
         const answer = event.target; // Get the clicked answer button
-        const correctAnswer = modalContent.querySelector(`[data-answer="${challenges[dey].data.rightAnswer}"]`); // Get the correct answer element
-        const progress = modalContent.querySelector('w-0');
+        const correctAnswer = modalContent.querySelector(`[data-answer="${challenges[dey].data.rightAnswer}"]`);
+        const progressBar = document.querySelector('.progress-bar');
+        const questionContainer = answer.closest('div'); // Get the parent container of the question
+
+        // Create or reuse feedback message
+        let feedbackMessage = questionContainer.querySelector('.feedback-message-wrong');
+        if (!feedbackMessage) {
+            feedbackMessage = document.createElement('div');
+            feedbackMessage.className = 'feedback-message text-success text-center w-50 mt-2 fade-in-out';
+            questionContainer.appendChild(feedbackMessage);
+        }
 
         // Disable all buttons after an answer is selected
         const allAnswers = modalContent.querySelectorAll('.answer');
-        allAnswers.forEach(button => button.disabled = true);
+        allAnswers.forEach(button => (button.disabled = true));
 
-        // Check if the clicked answer is correct
         if (answer === correctAnswer) {
-            // TO:DO - Go to next question
+            rightAnswers++;
             answer.classList.remove('btn-light');
             answer.classList.add('btn-success'); // Right Answer
 
-            // Change the progress bar
-            // TO:DO
-            progress.classList.remove('w-0');
-            progress.classList.add('w-50')
-            
-        } else { 
-            answer.classList.remove('btn-light');
-            answer.classList.add('btn-danger'); // Wrong answer
+            if (rightAnswers > 1) {
+                // Update progress bar to 100%
+                setTimeout(() => {
+                    progressBar.style.width = '100%';
+                    progressBar.setAttribute('aria-valuenow', '100');
+                }, 100);
 
-            // Get the parent container (auto-generated div) of the current question
-            const questionContainer = answer.closest('div');
+                // Final feedback message
+                feedbackMessage.textContent = `Congratulations! You finished this quiz with ${wrongAttempts} wrong attempts.`;
+                feedbackMessage.className = 'feedback-message-right text-success text-center w-50 mt-2 fade-in-out';                
 
-            // Create and add dynamic feedback message
-            const feedbackMessage = document.createElement('div');
-            feedbackMessage.textContent = 'Wrong Answer! Try again.';
-            feedbackMessage.classList.add('feedback-message', 'text-danger', 'mt-2', 'fade-in-out', 'text-center', 'w-50');
-            questionContainer.appendChild(feedbackMessage); // Append inside the question container
-            setTimeout(() => 
-                {  feedbackMessage.remove(); // Remove the message
-                    allAnswers.forEach(button => (button.disabled = false));
-                    answer.classList.remove('btn-danger');
-                    answer.classList.add('btn-light'); 
+                setTimeout(() => { closeModal(); }, 3000)
+            } else {
+                // Update progress bar to 50%
+                setTimeout(() => {
+                    progressBar.style.width = '50%';
+                    progressBar.setAttribute('aria-valuenow', '50');
+                }, 100);
+
+                // Load next question after delay
+                setTimeout(() => {
+                    challenges[dey].data.question = challenges[dey].data.question2;
+                    challenges[dey].data.answer1 = challenges[dey].data.answer21;
+                    challenges[dey].data.answer2 = challenges[dey].data.answer22;
+                    challenges[dey].data.answer3 = challenges[dey].data.answer23;
+                    challenges[dey].data.rightAnswer = challenges[dey].data.rightAnswer2;
+                    challenges[dey].data.progress = 50;
+
+                    // Update modal content
+                    let content = generateQuizContent(challenges[dey].data);
+                    modalContent.innerHTML = content;
                 }, 2000);
+            }
+        } else {
+            // Incorrect answer
+            wrongAttempts++;
+            answer.classList.remove('btn-light');
+            answer.classList.add('btn-danger'); // Wrong Answer
+
+            // Display feedback message
+            feedbackMessage.textContent = 'Wrong Answer! Try again.';
+            feedbackMessage.className = 'feedback-message-wrong text-danger text-center w-50 mt-2 fade-in-out';
+
+            // Allow retry after delay
+            setTimeout(() => {
+                feedbackMessage.remove();
+                allAnswers.forEach(button => (button.disabled = false));
+                answer.classList.remove('btn-danger');
+                answer.classList.add('btn-light');
+            }, 2000);
         }
     }
 });
