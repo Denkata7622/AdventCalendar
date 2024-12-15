@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalOverlay = document.getElementById('modal-overlay');
     const modalContent = document.getElementById('modal-content-body');
     const closeModalButton = document.querySelector('.close-btn');
+    let startButton = document.getElementById('startGame'); // Query after content is injected
+    const player = document.getElementById('player');
+    const gameArea = document.getElementById('game-area');
+    const scoreDisplay = document.getElementById('score');
+
 
     // Define content for each day
     const challenges = {
@@ -192,6 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
             }
         },
+        25: { type: "final" },
     };
 
     // Function to generate quiz content
@@ -232,6 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
     }
+
     const date = new Date();
     const tempdate = date.getDate();
 
@@ -300,7 +307,6 @@ modalContent.addEventListener('click', (event) => {
                 challenges[dey].data.rightAnswer = challenges[dey].data.rightAnswer3;
                 challenges[dey].data.progress = 0;
                 rightAnswers = 0;
-           
 
                 setTimeout(() => { closeModal(); }, 3000)
             } else {
@@ -371,6 +377,9 @@ cards.forEach(card => {
                 case "project":
                     content = generateProjectContent(challenge.data);
                     break;
+                case "final":
+                    window.location.href = "end.html";
+                    break;
             }
 
             // Insert content into modal
@@ -402,4 +411,104 @@ cards.forEach(card => {
             closeModal();
         }
     });
+
+
+
+
+
+/*  Deleted Idea for a Game for The Last Day
+
+let hasStarted = false;
+
+// Function to render the modal and attach the event listener
+
+// Detect and handle collisions with gifts
+setInterval(() => {
+    const gifts = document.querySelectorAll('.gift'); // Get all active gifts
+    gifts.forEach(gift => {
+        // Function to detect collisions
+        function checkCollision(gift) {
+            const playerRect = player.getBoundingClientRect();
+            const giftRect = gift.getBoundingClientRect();
+
+            return !(
+                playerRect.right < giftRect.left || // Player is left of the gift
+                playerRect.left > giftRect.right || // Player is right of the gift
+                playerRect.bottom < giftRect.top || // Player is above the gift
+                playerRect.top > giftRect.bottom    // Player is below the gift
+            );
+        }
+
+        if (checkCollision(player, gift)) {
+            console.log('Collision detected!'); // Debugging: Log when a collision is detected
+
+            // Increment score and update UI
+            score++;
+            scoreDisplay.textContent = score;
+
+            // Remove the collected gift
+            gift.remove();
+
+            // Check if the required number of gifts is collected
+            if (score >= challenges[25].data.giftsToCollect) {
+                document.getElementById('certificate-container').style.display = 'block';
+            }
+        }
+    });
+}, 100);
+
+// Function to spawn gifts
+function spawnGift() {
+    const gift = document.createElement('div');
+    gift.className = 'gift';
+
+    // Gift styles
+    gift.style.width = '30px';
+    gift.style.height = '30px';
+    gift.style.backgroundColor = 'gold';
+    gift.style.position = 'absolute';
+
+    // Random position within the game area
+    const gameAreaRect = gameArea.getBoundingClientRect();
+    const maxLeft = gameAreaRect.width - 30;
+    const maxTop = gameAreaRect.height - 30;
+    gift.style.left = `${Math.random() * maxLeft}px`;
+    gift.style.top = `${Math.random() * maxTop}px`;
+
+    gameArea.appendChild(gift);
+
+    // Debugging: Log when a gift is spawned
+    console.log('Gift spawned at:', gift.style.left, gift.style.top);
+
+    // Remove the gift after 5 seconds if not collected
+    setTimeout(() => {
+        if (gift.parentElement) gift.remove();
+    }, 5000);
+}
+
+// Start game logic
+startButton.addEventListener('click', () => {
+    startGame();
+});
+
+function startGame() {
+    // Initialize game variables
+    let score = 0;
+    const giftsToCollect = data.giftsToCollect;
+    let gifts = document.querySelectorAll('.gift');
+    const certificateContainer = document.getElementById('certificate-container');    
+    
+    // Reset score
+    score = 0;
+    scoreDisplay.textContent = score;
+
+    // Show game area
+    gameArea.style.display = 'block';
+
+    // Spawn gifts every second
+    const giftInterval = setInterval(spawnGift, 1000);
+
+    // Stop spawning gifts after 30 seconds
+    setTimeout(() => clearInterval(giftInterval), 30000);
+}*/
 });

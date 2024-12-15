@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fireworks Celebration</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    h1 {
+      position: absolute;
+      top: 20px;
+      width: 100%;
+      font-size: 2rem;
+      z-index: 10;
+      text-shadow: 2px 2px 5px #ff0000;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Congratulations! 🎉 You’ve completed the STEM Advent Calendar!</h1>
+  <canvas id="fireworks"></canvas>
+  
+  <script>
+    const canvas = document.getElementById('fireworks');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    class Firework {
+      constructor(x, y, color, size, speedX, speedY) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.size = size;
+        this.speedX = speedX;
+        this.speedY = speedY;
+        this.opacity = 1;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.size *= 0.97;
+        this.opacity -= 0.03;
+      }
+      draw() {
+        ctx.globalAlpha = this.opacity;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
+
+    let fireworks = [];
+
+    function createFirework(x, y) {
+      const colors = ['#ff5733', '#33ff57', '#3357ff', '#ff33a8', '#a833ff'];
+      const numParticles = Math.random() * 20 + 30;
+      for (let i = 0; i < numParticles; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 4 + 2;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        fireworks.push(new Firework(
+          x,
+          y,
+          color,
+          Math.random() * 4 + 2,
+          Math.cos(angle) * speed,
+          Math.sin(angle) * speed
+        ));
+      }
+    }
+
+    function animate() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      fireworks.forEach((firework, index) => {
+        firework.update();
+        firework.draw();
+        if (firework.opacity <= 0) fireworks.splice(index, 1);
+      });
+      requestAnimationFrame(animate);
+    }
+
+    // Click Event to create fireworks
+    canvas.addEventListener('click', (e) => {
+      createFirework(e.clientX, e.clientY);
+    });
+
+    // Automatically create fireworks
+    setInterval(() => {
+      createFirework(Math.random() * canvas.width, Math.random() * canvas.height);
+    }, 500);
+
+    animate();
+  </script>
+</body>
+</html>
