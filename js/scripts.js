@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const body = document.body;
     const cards = document.querySelectorAll('.card');
     const unlockAll = document.querySelectorAll('.admin-button'); 
     const modalOverlay = document.getElementById('modal-overlay');
@@ -8,6 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const player = document.getElementById('player');
     const gameArea = document.getElementById('game-area');
     const scoreDisplay = document.getElementById('score');
+    const fireworkSound = new Audio();
+    fireworkSound.src = 'C:/Users/denis/OneDrive/Documents/GitHub/AdventCalendar/assets/audio/background.mp3';
+    fireworkSound.preload = 'auto';
+    let strartedPlaying = false;
+    let soundEnabled = false;
 
 
     // Define content for each day
@@ -36,14 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
         2: { 
             type: "fact", 
             data: {
-                picture: "assets/img/download.jpeg",
-                text: "Did you know? The first Christmas card was sent in 1843!" 
+                picture: "assets/img/fact1.png",
+                text: "92% of boys and 97% of girls will lose interest in STEM if they are not immersed before 5th grade." 
             }
         },
         3: { 
-            type: "project", 
+            type: "project",
             data: { 
-                title: "Make a Paper Snowflake", 
+                title: "Make a Paper Snowflake",
+                picture: "assets/img/project1.jpg",
                 description: "Fold paper into a triangle and cut shapes along the edges. Unfold to reveal your snowflake!" 
             }
         },
@@ -60,8 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
         5: { 
             type: "fact", 
             data: { 
-                picture: "assets/img/download.jpeg",
-                text: "92% of boys and 97% of girls will lose interest in STEM if they are not immersed before 5th grade." 
+                picture: "assets/img/fact2.jpeg",
+                text: "The Pigeon Post: Before email, Charles Darwin relied on a unique communication method: carrier pigeons! These feathered messengers helped him stay connected with fellow scientists across vast distances." 
             }
         },
         6: { 
@@ -81,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         8: { 
             type: "fact", 
             data: { 
-                title: "Decorate Christmas Cookies", 
+                picture: "assets/img/fact3.jpg", 
                 text: "In the United States, there are more employment opportunities for skilled scientists than there are applicants to fill them." 
             }
         },
@@ -102,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         11: { 
             type: "fact", 
             data: {
-                title: "Decorate Christmas Cookies", 
+                picture: "assets/img/fact4.webp", 
                 text: " A third of the world’s population has never used a phone." 
             }
         },
@@ -123,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         14: { 
             type: "fact", 
             data: { 
-                title: "Decorate Christmas Cookies", 
+                picture: "assets/img/fact5.webp", 
                 text: "Steve Wozniak and Steve Jobs, who co-founded Apple, originally achieved fame as teenagers by developing the video game named 'Breakout'" 
             }
         },
@@ -144,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         17: { 
             type: "fact", 
             data: { 
-                title: "Decorate Christmas Cookies", 
+                picture: "assets/img/fact6.jpeg", 
                 text: "Pluto was discovered in 1930, but its cycle around the Sun has not yet finished since a Plutonian year is 247.68 times longer than an Earth year." 
             }
         },
@@ -165,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         20: { 
             type: "fact", 
             data: { 
-                title: "Decorate Christmas Cookies", 
+                picture: "assets/img/fact7.jpg", 
                 text: "More than half of the world’s oxygen is produced by plankton, seaweed, and other photosynthesizers." 
             }
         },
@@ -186,8 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
         23: { 
             type: "fact", 
             data: { 
-                title: "Decorate Christmas Cookies", 
-                text: "The Pigeon Post: Before email, Charles Darwin relied on a unique communication method: carrier pigeons! These feathered messengers helped him stay connected with fellow scientists across vast distances." 
+                picture: "assets/img/fact8.jpeg", 
+                text: "The only number with the letter “a” in it from 0 to 1000 is “one thousand." 
             }
         },
         24: { 
@@ -233,8 +240,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return `
             <div class="p-3" style="user-select: none">
                 <h2 class="mb-3">Day ${dey}</h2>
-                <img src="${data.picture}" alt="Fun Fact Image" class="img-fluid rounded-4 my-3">
                 <h5>${data.description}</h5>
+                <img src="${data.picture}" alt="Fun Fact Image" class="img-fluid rounded-4 my-3">
             </div>
         `;
     }
@@ -354,6 +361,10 @@ modalContent.addEventListener('click', (event) => {
 // Save the day number for purposes outside the card opening function
 let dey = 0;
 
+body.addEventListener('click', () => {
+    soundEnabled = true;
+})
+
 
 // Add click event listener to each card
 cards.forEach(card => {
@@ -413,7 +424,12 @@ cards.forEach(card => {
     });
 
 
-
+    setInterval (() => {
+        if (soundEnabled && !strartedPlaying){
+            strartedPlaying = true;
+            fireworkSound.currentTime = 0; // Reset sound to the beginning
+            fireworkSound.play().catch((err) => console.warn("Audio play error:", err));
+      }}, 100);
 
 
 /*  Deleted Idea for a Game for The Last Day

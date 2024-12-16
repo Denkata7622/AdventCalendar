@@ -28,6 +28,7 @@
       transform: translateY(-30px);
       animation: fadeIn 1.5s ease-out forwards;
     }
+    
     canvas {
       display: block;
       position: absolute;
@@ -55,22 +56,16 @@
 
     /* Badge Styling */
     .badge {
-      display: none;
+      display: none; /* Default state */
+      justify-content: center; /* Center content */
+      align-items: center; /* Center content */
+      flex-direction: column; /* Allow vertical stacking */
       position: fixed;
-      top: 25rem;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 350px;
-      height: 350px;
-      background-color: #f39c12; /* Gold Inside */
-      border-radius: 50%;
-      color: #fff;
-      font-size: 2rem;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-      border: 10px solid #f39c12; /* Golden Border */
-      position: relative;
+      background-color: transparent;
+      z-index: 10;
     }
 
     /* Tree Logo */
@@ -153,19 +148,20 @@
   </style>
 </head>
 <body>
-  <h1>🎉 Merry Christmas! 🎉</h1>
+  <h1>🎉 Merry Christmas! 🎉</br>(Click Anywhere to Start Music)
+  </h1>
   <canvas id="fireworks"></canvas>
   <button class="restart-btn" onclick="restartFireworks()">Restart Fireworks</button>
   <button class="keepsake-btn" onclick="giveKeepsake()">Get Your Keepsake</button>
 
   <!-- Keepsake Badge -->
   <div class="badge" id="badge">
-    <div class="badge-logo"></div> <!-- Tree Logo -->
+    <img src="assets/img/tree.jpg" class="badge-logo"></img> <!-- Tree Logo -->
     <div class="circle-text">
       <span>STEM Advent Calendar</span> <!-- Circular Text -->
     </div>
     <p class="badge-text">You've Earned Your Badge! 🎉</p>
-    <a id="download-link" href="https://github.com/Denkata7622/AdventCalendar" download>
+    <a id="download-link" class="link link-danger" href="https://github.com/Denkata7622/AdventCalendar" download>
       <button class="download-btn">Download Your Badge</button>
     </a>      
   </div>
@@ -176,6 +172,8 @@
     const fireworkSound = new Audio();
     fireworkSound.src = 'C:/Users/denis/OneDrive/Documents/GitHub/AdventCalendar/assets/audio/crack.mp3';
     fireworkSound.preload = 'auto';
+    let soundEnabled = false;
+    let strartedPlaying = false;
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -225,14 +223,6 @@
         ));
       }}
 
-      setInterval( () => {
-          const fireworkSound = new Audio();
-          fireworkSound.src = 'C:/Users/denis/OneDrive/Documents/GitHub/AdventCalendar/assets/audio/crack.mp3';
-          fireworkSound.preload = 'auto';
-          fireworkSound.currentTime = 10; // Reset sound to the beginning
-          fireworkSound.play().catch((err) => console.warn("Audio play error:", err));
-      }, 10000)
-
     function animate() {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -247,6 +237,7 @@
     // Click Event to create fireworks
     canvas.addEventListener('click', (e) => {
       createFirework(e.clientX + Math.random() * 20 - Math.random() * 20, e.clientY + Math.random() * 20 - Math.random() * 20);
+      soundEnabled = true;
     });
 
     // Automatically create fireworks at random intervals
@@ -262,77 +253,95 @@
       startAutoFireworks(); // Start new fireworks
     }
 
-    // Show the keepsake badge and generate download link
-    function giveKeepsake() {
-      const badge = document.getElementById('badge');
-      const downloadLink = document.getElementById('download-link');
-      badge.style.display = 'block';
+// Show the keepsake badge and generate download link
+function giveKeepsake() {
+  const badge = document.getElementById("badge");
+  const downloadLink = document.getElementById("download-link");
+  
+  // Display the badge
+  badge.style.display = "flex";
 
-      // Canvas for the badge image
-      const badgeCanvas = document.createElement('canvas');
-      const badgeCtx = badgeCanvas.getContext('2d');
-      badgeCanvas.width = 350;
-      badgeCanvas.height = 350;
+  // Canvas for the badge image
+  const badgeCanvas = document.createElement("canvas");
+  const badgeCtx = badgeCanvas.getContext("2d");
+  badgeCanvas.width = 350;
+  badgeCanvas.height = 350;
 
-      // Golden background for the badge
-      badgeCtx.beginPath();
-      badgeCtx.arc(badgeCanvas.width / 2, badgeCanvas.height / 2, 160, 0, Math.PI * 2);
-      badgeCtx.fillStyle = '#f39c12'; // Golden inside
-      badgeCtx.fill();
-      badgeCtx.closePath();
+  // Golden background for the badge
+  badgeCtx.beginPath();
+  badgeCtx.arc(badgeCanvas.width / 2, badgeCanvas.height / 2, 160, 0, Math.PI * 2);
+  badgeCtx.fillStyle = "#f39c12"; // Golden inside
+  badgeCtx.fill();
+  badgeCtx.closePath();
 
-      // Golden border for the badge
-      badgeCtx.beginPath();
-      badgeCtx.arc(badgeCanvas.width / 2, badgeCanvas.height / 2, 160, 0, Math.PI * 2);
-      badgeCtx.lineWidth = 10;
-      badgeCtx.strokeStyle = '#ffcc00'; // Border Color
-      badgeCtx.stroke();
-      badgeCtx.closePath();
+  // Golden border for the badge
+  badgeCtx.beginPath();
+  badgeCtx.arc(badgeCanvas.width / 2, badgeCanvas.height / 2, 160, 0, Math.PI * 2);
+  badgeCtx.lineWidth = 10;
+  badgeCtx.strokeStyle = "#ffcc00"; // Border Color
+  badgeCtx.stroke();
+  badgeCtx.closePath();
 
-      // Circular Text: STEM Advent Calendar
-      badgeCtx.font = '18px Arial';
-      badgeCtx.textAlign = 'center';
-      badgeCtx.textBaseline = 'middle';
-      badgeCtx.fillStyle = '#ffcc00';
-      badgeCtx.save();
-      badgeCtx.translate(badgeCanvas.width / 2, badgeCanvas.height / 2);
-      badgeCtx.rotate(-Math.PI / 2);
-      const circleText = 'STEM Advent Calendar';
-      let angle = 0;
-      for (let i = 0; i < circleText.length; i++) {
-        badgeCtx.save();
-        badgeCtx.rotate(angle);
-        badgeCtx.fillText(circleText[i], 0, -140);
-        badgeCtx.restore();
-        angle += Math.PI / 20;
-      }
-      badgeCtx.restore();
+  // Circular Text: STEM Advent Calendar
+  badgeCtx.font = "18px Arial";
+  badgeCtx.textAlign = "center";
+  badgeCtx.textBaseline = "middle";
+  badgeCtx.fillStyle = "#ffcc00";
+  badgeCtx.save();
+  badgeCtx.translate(badgeCanvas.width / 2, badgeCanvas.height / 2);
+  badgeCtx.rotate(-Math.PI / 2);
+  const circleText = "STEM Advent Calendar";
+  let angle = 0;
+  for (let i = 0; i < circleText.length; i++) {
+    badgeCtx.save();
+    badgeCtx.rotate(angle);
+    badgeCtx.fillText(circleText[i], 0, -140);
+    badgeCtx.restore();
+    angle += Math.PI / 20;
+  }
+  badgeCtx.restore();
 
-      // Tree logo (centered)
-      badgeCtx.beginPath();
-      badgeCtx.arc(badgeCanvas.width / 2, badgeCanvas.height / 2, 80, 0, Math.PI * 2);
-      badgeCtx.fillStyle = '#2ecc71'; // Tree color
-      badgeCtx.fill();
-      badgeCtx.closePath();
+  // Tree logo (centered)
+  badgeCtx.beginPath();
+  badgeCtx.arc(badgeCanvas.width / 2, badgeCanvas.height / 2, 80, 0, Math.PI * 2);
+  badgeCtx.fillStyle = "#2ecc71"; // Tree color
+  badgeCtx.fill();
+  badgeCtx.closePath();
 
-      // Advent Calendar Text below the tree
-      badgeCtx.font = '22px Arial';
-      badgeCtx.fillStyle = '#ffcc00';
-      badgeCtx.fillText('Advent Calendar', badgeCanvas.width / 2, badgeCanvas.height / 2 + 90);
+  // Advent Calendar Text below the tree
+  badgeCtx.font = "22px Arial";
+  badgeCtx.fillStyle = "#ffcc00";
+  badgeCtx.fillText("Advent Calendar", badgeCanvas.width / 2, badgeCanvas.height / 2 + 90);
 
-      // Set the badge to download
-      downloadLink.href = badgeCanvas.toDataURL();
-      downloadLink.download = 'STEM_Advent_Calendar_Badge.png';
+  // Append badge canvas as an image inside the badge
+  const badgeImage = new Image();
+  badgeImage.src = badgeCanvas.toDataURL();
+  badgeImage.style.width = "100%";
+  badge.appendChild(badgeImage);
 
-      // Hide the badge after 5 seconds
-      setTimeout(() => {
-        badge.style.display = 'none';
-      }, 5000);
-    }
+  // Set the badge to download
+  downloadLink.href = badgeCanvas.toDataURL();
+  downloadLink.download = "STEM_Advent_Calendar_Badge.png";
+
+  // Hide the badge after 10 seconds
+  setTimeout(() => {
+    badge.style.display = "none";
+    badge.innerHTML = ""; // Clear previous badge content
+  }, 10000);
+}
 
     // Start the animation
     startAutoFireworks();
     animate();
+
+    setInterval (() => {
+      if (soundEnabled && !strartedPlaying){
+          strartedPlaying = true;
+          fireworkSound.currentTime = 0; // Reset sound to the beginning
+          fireworkSound.play().catch((err) => console.warn("Audio play error:", err));
+    }}, 100);
+
+
   </script>
 </body>
 </html>
