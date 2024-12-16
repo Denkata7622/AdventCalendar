@@ -50,8 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
             type: "project",
             data: { 
                 title: "Make a Paper Snowflake",
-                picture: "assets/img/project1.jpg",
-                description: "Fold paper into a triangle and cut shapes along the edges. Unfold to reveal your snowflake!" 
+                picture: "assets/img/proj1.jpg",
+                description: "Fold paper into a triangle and cut shapes along the edges. Unfold to reveal your snowflake!",
+                description: "Build a balloon-powered car from recycled materials in this fun activity. You can even grab a friend, build two cars, and race them against each other!",
+                link: "https://youtu.be/RStgV8mA-gA?si=RxJxxZAeZptycVvr"
             }
         },
         4: { 
@@ -72,9 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         6: { 
-            type: "project", 
+            type: "project",
             data: { 
-                title: "Decorate Christmas Cookies", 
+                title: "Decorate Christmas Cookies",
+                picture: "assets/img/project2.jpg",
                 description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
             }
         },
@@ -242,6 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h2 class="mb-3">Day ${dey}</h2>
                 <h5>${data.description}</h5>
                 <img src="${data.picture}" alt="Fun Fact Image" class="img-fluid rounded-4 my-3">
+                <a href="https://youtu.be/RStgV8mA-gA?si=RxJxxZAeZptycVvr">Click Here For a Tutorial</a>
             </div>
         `;
     }
