@@ -21,21 +21,21 @@ document.addEventListener('DOMContentLoaded', () => {
         1: { 
             type: "quiz", 
             data: { 
-                question: "What is the largest ocean on Earth?", 
-                answer1: "Atlantic Ocean", 
-                answer2: "Indian Ocean", 
-                answer3: "Pacific Ocean",
-                rightAnswer: "Atlantic Ocean",
-                question2: "Hello",
-                answer21: "Hi",
-                answer22: "Sup",
-                answer23: "Hello",
-                rightAnswer2: "Hello",
-                question3: "What is the largest ocean on Earth?", 
-                answer31: "Atlantic Ocean", 
-                answer32: "Indian Ocean", 
-                answer33: "Pacific Ocean",
-                rightAnswer3: "Atlantic Ocean",
+                question: "What percentage of internantional students recieve engineering degrees in the US", 
+                answer1: "20%", 
+                answer2: "90%", 
+                answer3: "50%",
+                rightAnswer: "50%",
+                question2: "How many tons of outdated computers and electronics are discarded every year in the US?",
+                answer21: "100 million",
+                answer22: "150 million",
+                answer23: "220 million",
+                rightAnswer2: "220 million",
+                question3: "What percentage of internantional students recieve engineering degrees in the US", 
+                answer31: "20%", 
+                answer32: "90%", 
+                answer33: "50%",
+                rightAnswer: "50%",
                 progress: 0
             }
         },
@@ -59,11 +59,22 @@ document.addEventListener('DOMContentLoaded', () => {
         4: { 
             type: "quiz", 
             data: { 
-                question: "Who developed the theory of relativity?", 
-                answer1: "Isaac Newton", 
-                answer2: "Albert Einstein", 
-                answer3: "Galileo Galilei",
-                rightAnswer: "Albert Einstein"
+                question: "Why does Mars appear to be red?", 
+                answer1: "it is coated in rust", 
+                answer2: "the air contains toxic gases", 
+                answer3: "there are red animals on the surface",
+                rightAnswer: "it is coated in rust",
+                question2: "How many of the world's researchers are women",
+                answer21: "10,8%",
+                answer22: "75,9%",
+                answer23: "29,3%",
+                rightAnswer2: "29,3%",
+                question3: "Why does Mars appear to be red?", 
+                answer31: "it is coated in rust", 
+                answer32: "the air contains toxic gases", 
+                answer33: "there are red animals on the surface",
+                rightAnswer: "it is coated in rust",
+                progress: 0
             }
         },
         5: { 
@@ -84,8 +95,22 @@ document.addEventListener('DOMContentLoaded', () => {
         7: { 
             type: "quiz", 
             data: {
-                title: "Decorate Christmas Cookies", 
-                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+                question: "What is the most preffered major selected by STEM-interested students?", 
+                answer1: "physics", 
+                answer2: "mechanical engineering", 
+                answer3: "biology",
+                rightAnswer: "mechanical engineering",
+                question2: "What is the second most preffered major selected by STEM-interested students?",
+                answer21: "biology",
+                answer22: "physics",
+                answer23: "chemistry",
+                rightAnswer2: "chemistry",
+                question3: "What is the most preffered major selected by STEM-interested students?", 
+                answer31: "physics", 
+                answer32: "mechanical engineering", 
+                answer33: "biology",
+                rightAnswer: "mechanical engineering",
+                progress: 0
             }
         },
         8: { 
@@ -105,8 +130,22 @@ document.addEventListener('DOMContentLoaded', () => {
         10: { 
             type: "quiz", 
             data: {
-                title: "Decorate Christmas Cookies", 
-                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+                question: "?", 
+                answer1: "Atlantic Ocean", 
+                answer2: "Indian Ocean", 
+                answer3: "Pacific Ocean",
+                rightAnswer: "Atlantic Ocean",
+                question2: "Hello",
+                answer21: "Hi",
+                answer22: "Sup",
+                answer23: "Hello",
+                rightAnswer2: "Hello",
+                question3: "What is the largest ocean on Earth?", 
+                answer31: "Atlantic Ocean", 
+                answer32: "Indian Ocean", 
+                answer33: "Pacific Ocean",
+                rightAnswer3: "Atlantic Ocean",
+                progress: 0
             }
         },
         11: { 
@@ -126,8 +165,22 @@ document.addEventListener('DOMContentLoaded', () => {
         13: { 
             type: "quiz", 
             data: { 
-                title: "Decorate Christmas Cookies", 
-                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+                question: "What is the largest ocean on Earth?", 
+                answer1: "Atlantic Ocean", 
+                answer2: "Indian Ocean", 
+                answer3: "Pacific Ocean",
+                rightAnswer: "Atlantic Ocean",
+                question2: "Hello",
+                answer21: "Hi",
+                answer22: "Sup",
+                answer23: "Hello",
+                rightAnswer2: "Hello",
+                question3: "What is the largest ocean on Earth?", 
+                answer31: "Atlantic Ocean", 
+                answer32: "Indian Ocean", 
+                answer33: "Pacific Ocean",
+                rightAnswer3: "Atlantic Ocean",
+                progress: 0 
             }
         },
         14: { 
@@ -147,8 +200,22 @@ document.addEventListener('DOMContentLoaded', () => {
         16: { 
             type: "quiz", 
             data: { 
-                title: "Decorate Christmas Cookies", 
-                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+                question: "What is the largest ocean on Earth?", 
+                answer1: "Atlantic Ocean", 
+                answer2: "Indian Ocean", 
+                answer3: "Pacific Ocean",
+                rightAnswer: "Atlantic Ocean",
+                question2: "Hello",
+                answer21: "Hi",
+                answer22: "Sup",
+                answer23: "Hello",
+                rightAnswer2: "Hello",
+                question3: "What is the largest ocean on Earth?", 
+                answer31: "Atlantic Ocean", 
+                answer32: "Indian Ocean", 
+                answer33: "Pacific Ocean",
+                rightAnswer3: "Atlantic Ocean",
+                progress: 0
             }
         },
         17: { 
@@ -168,8 +235,22 @@ document.addEventListener('DOMContentLoaded', () => {
         19: { 
             type: "quiz", 
             data: { 
-                title: "Decorate Christmas Cookies", 
-                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+                question: "What is the largest ocean on Earth?", 
+                answer1: "Atlantic Ocean", 
+                answer2: "Indian Ocean", 
+                answer3: "Pacific Ocean",
+                rightAnswer: "Atlantic Ocean",
+                question2: "Hello",
+                answer21: "Hi",
+                answer22: "Sup",
+                answer23: "Hello",
+                rightAnswer2: "Hello",
+                question3: "What is the largest ocean on Earth?", 
+                answer31: "Atlantic Ocean", 
+                answer32: "Indian Ocean", 
+                answer33: "Pacific Ocean",
+                rightAnswer3: "Atlantic Ocean",
+                progress: 0 
             }
         },
         20: { 
@@ -189,8 +270,22 @@ document.addEventListener('DOMContentLoaded', () => {
         22: { 
             type: "quiz", 
             data: { 
-                title: "Decorate Christmas Cookies", 
-                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+                question: "What is the largest ocean on Earth?", 
+                answer1: "Atlantic Ocean", 
+                answer2: "Indian Ocean", 
+                answer3: "Pacific Ocean",
+                rightAnswer: "Atlantic Ocean",
+                question2: "Hello",
+                answer21: "Hi",
+                answer22: "Sup",
+                answer23: "Hello",
+                rightAnswer2: "Hello",
+                question3: "What is the largest ocean on Earth?", 
+                answer31: "Atlantic Ocean", 
+                answer32: "Indian Ocean", 
+                answer33: "Pacific Ocean",
+                rightAnswer3: "Atlantic Ocean",
+                progress: 0
             }
         },
         23: { 
