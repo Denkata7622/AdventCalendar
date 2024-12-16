@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 answer31: "20%", 
                 answer32: "90%", 
                 answer33: "50%",
-                rightAnswer: "50%",
+                rightAnswer3: "50%",
                 progress: 0
             }
         },
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 answer31: "it is coated in rust", 
                 answer32: "the air contains toxic gases", 
                 answer33: "there are red animals on the surface",
-                rightAnswer: "it is coated in rust",
+                rightAnswer3: "it is coated in rust",
                 progress: 0
             }
         },
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 answer31: "physics", 
                 answer32: "mechanical engineering", 
                 answer33: "biology",
-                rightAnswer: "mechanical engineering",
+                rightAnswer3: "mechanical engineering",
                 progress: 0
             }
         },
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 answer31: "5000", 
                 answer32: "500", 
                 answer33: "1000",
-                rightAnswer: "5000",
+                rightAnswer3: "5000",
                 progress: 0
             }
         },
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 answer31: "Atom", 
                 answer32: "Cell", 
                 answer33: "Tissue",
-                rightAnswer: "Cell",
+                rightAnswer3: "Cell",
                 progress: 0 
             }
         },
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 answer31: "To support the deck by distributing tension.", 
                 answer32: "To anchor the bridge to the ground.", 
                 answer33: "To reduce wind resistance.",
-                rightAnswer: "To support the deck by distributing tension.",
+                rightAnswer3: "To support the deck by distributing tension.",
                 progress: 0
             }
         },
@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 answer31: "Kinetic Energy", 
                 answer32: "Potential Energy", 
                 answer33: "Thermal Energy",
-                rightAnswer: "Potential Energy",
+                rightAnswer3: "Potential Energy",
                 progress: 0 
             }
         },
@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
             type: "project", 
             data: { 
                 description: "Have you ever wondered how plants take up water from the soil? Water uptake in plants is quite complex and involves a process called osmosis. Osmosis makes the water from the soil move into the roots of the plant. But what drives the water from the soil into the plant cells? In this activity, you will do an experiment with potatoes to find out!",
-                picture: "assets/img/project3.jpg",
+                picture: "assets/img/project7.jpeg",
                 href: "https://youtu.be/uOaV81WuHqA?si=hwKfA5UhtWJ7E23y"
             }
         },
@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 answer31: "Artificial Imagination", 
                 answer32: "Artificial Intelligence", 
                 answer33: "Automated Interface",
-                rightAnswer: "Artificial Intelligence",
+                rightAnswer3: "Artificial Intelligence",
                 progress: 0
             }
         },
@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h2 class="mb-3">Day ${dey}</h2>
                 <h5>${data.description}</h5>
                 <img src="${data.picture}" alt="Fun Fact Image" class="img-fluid rounded-4 my-3"> </br>
-                <a href="https://youtu.be/RStgV8mA-gA?si=RxJxxZAeZptycVvr">Click Here For a Tutorial</a>
+                <a href="${data.href}" target="_blank" rel="noopener noreferrer">Click Here For a Tutorial</a>
             </div>
         `;
     }
@@ -409,7 +409,7 @@ modalContent.addEventListener('click', (event) => {
 
                 // Final feedback message
                 feedbackMessage.textContent = `Congratulations! You finished this quiz with ${wrongAttempts} wrong attempts.`;
-                feedbackMessage.className = 'feedback-message-right text-success text-center w-50 mt-2 fade-in-out';     
+                feedbackMessage.className = 'feedback-message-right text-success text-center w-50 mt-2 fade-in-out';
 
                 challenges[dey].data.question = challenges[dey].data.question3;
                 challenges[dey].data.answer1 = challenges[dey].data.answer31;
@@ -418,6 +418,7 @@ modalContent.addEventListener('click', (event) => {
                 challenges[dey].data.rightAnswer = challenges[dey].data.rightAnswer3;
                 challenges[dey].data.progress = 0;
                 rightAnswers = 0;
+                wrongAttempts = 0;
 
                 setTimeout(() => { closeModal(); }, 3000)
             } else {
