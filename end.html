@@ -72,10 +72,10 @@
     .badge-logo {
       width: 80px;
       height: 80px;
-      background: url('/assets/img/tree.jpg') center/contain no-repeat;
+      background: url('/assets/img/tree.png') center/contain no-repeat;
       margin-bottom: 15px;
       position: absolute;
-      top: 50%;
+      top: 60%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
@@ -153,15 +153,17 @@
   <canvas id="fireworks"></canvas>
   <button class="restart-btn" onclick="restartFireworks()">Restart Fireworks</button>
   <button class="keepsake-btn" onclick="giveKeepsake()">Get Your Keepsake</button>
+  
+  
 
   <!-- Keepsake Badge -->
   <div class="badge" id="badge">
-    <img src="assets/img/tree.jpg" class="badge-logo"></img> <!-- Tree Logo -->
+    <img src="assets/img/tree.png" class="badge-logo"></img> <!-- Tree Logo -->
     <div class="circle-text">
       <span>STEM Advent Calendar</span> <!-- Circular Text -->
     </div>
     <p class="badge-text">You've Earned Your Badge! 🎉</p>
-    <a id="download-link" class="link link-danger" href="https://github.com/Denkata7622/AdventCalendar" download>
+    <a id="download-link" class="link link-danger" href="https://github.com/Denkata7622/AdventCalendar/" download>
       <button class="download-btn">Download Your Badge</button>
     </a>      
   </div>
@@ -254,80 +256,84 @@
     }
 
 // Show the keepsake badge and generate download link
+let isSakeOpen = false;
 function giveKeepsake() {
-  const badge = document.getElementById("badge");
-  const downloadLink = document.getElementById("download-link");
-  
-  // Display the badge
-  badge.style.display = "flex";
+  if(isSakeOpen == false){
+    const badge = document.getElementById("badge");
+    const downloadLink = document.getElementById("download-link");
+    
+    // Display the badge
 
-  // Canvas for the badge image
-  const badgeCanvas = document.createElement("canvas");
-  const badgeCtx = badgeCanvas.getContext("2d");
-  badgeCanvas.width = 350;
-  badgeCanvas.height = 350;
+      badge.style.display = "flex";
+      isSakeOpen = true;
+    // Canvas for the badge image
+    const badgeCanvas = document.createElement("canvas");
+    const badgeCtx = badgeCanvas.getContext("2d");
+    badgeCanvas.width = 350;
+    badgeCanvas.height = 350;
 
-  // Golden background for the badge
-  badgeCtx.beginPath();
-  badgeCtx.arc(badgeCanvas.width / 2, badgeCanvas.height / 2, 160, 0, Math.PI * 2);
-  badgeCtx.fillStyle = "#f39c12"; // Golden inside
-  badgeCtx.fill();
-  badgeCtx.closePath();
+    // Golden background for the badge
+    badgeCtx.beginPath();
+    badgeCtx.arc(badgeCanvas.width / 2, badgeCanvas.height / 2, 160, 0, Math.PI * 2);
+    badgeCtx.fillStyle = "#f39c12"; // Golden inside
+    badgeCtx.fill();
+    badgeCtx.closePath();
 
-  // Golden border for the badge
-  badgeCtx.beginPath();
-  badgeCtx.arc(badgeCanvas.width / 2, badgeCanvas.height / 2, 160, 0, Math.PI * 2);
-  badgeCtx.lineWidth = 10;
-  badgeCtx.strokeStyle = "#ffcc00"; // Border Color
-  badgeCtx.stroke();
-  badgeCtx.closePath();
+    // Golden border for the badge
+    badgeCtx.beginPath();
+    badgeCtx.arc(badgeCanvas.width / 2, badgeCanvas.height / 2, 160, 0, Math.PI * 2);
+    badgeCtx.lineWidth = 10;
+    badgeCtx.strokeStyle = "#ffcc00"; // Border Color
+    badgeCtx.stroke();
+    badgeCtx.closePath();
 
-  // Circular Text: STEM Advent Calendar
-  badgeCtx.font = "18px Arial";
-  badgeCtx.textAlign = "center";
-  badgeCtx.textBaseline = "middle";
-  badgeCtx.fillStyle = "#ffcc00";
-  badgeCtx.save();
-  badgeCtx.translate(badgeCanvas.width / 2, badgeCanvas.height / 2);
-  badgeCtx.rotate(-Math.PI / 2);
-  const circleText = "STEM Advent Calendar";
-  let angle = 0;
-  for (let i = 0; i < circleText.length; i++) {
+    // Circular Text: STEM Advent Calendar
+    badgeCtx.font = "18px Arial";
+    badgeCtx.textAlign = "center";
+    badgeCtx.textBaseline = "middle";
+    badgeCtx.fillStyle = "#ffcc00";
     badgeCtx.save();
-    badgeCtx.rotate(angle);
-    badgeCtx.fillText(circleText[i], 0, -140);
+    badgeCtx.translate(badgeCanvas.width / 2, badgeCanvas.height / 2);
+    badgeCtx.rotate(-Math.PI / 2);
+    const circleText = "STEM Advent Calendar";
+    let angle = 0;
+    for (let i = 0; i < circleText.length; i++) {
+      badgeCtx.save();
+      badgeCtx.rotate(angle);
+      badgeCtx.fillText(circleText[i], 0, -140);
+      badgeCtx.restore();
+      angle += Math.PI / 20;
+    }
     badgeCtx.restore();
-    angle += Math.PI / 20;
+
+    // Tree logo (centered)
+    badgeCtx.beginPath();
+    badgeCtx.arc(badgeCanvas.width / 2, badgeCanvas.height / 2, 80, 0, Math.PI * 2);
+    badgeCtx.fillStyle = "#2ecc71"; // Tree color
+    badgeCtx.fill();
+    badgeCtx.closePath();
+
+    // Advent Calendar Text below the tree
+    badgeCtx.font = "22px Arial";
+    badgeCtx.fillStyle = "#ffcc00";
+    badgeCtx.fillText("Advent Calendar", badgeCanvas.width / 2, badgeCanvas.height / 2 + 90);
+
+    // Append badge canvas as an image inside the badge
+    const badgeImage = new Image();
+    badgeImage.src = badgeCanvas.toDataURL();
+    badgeImage.style.width = "100%";
+    badge.appendChild(badgeImage);
+
+    // Set the badge to download
+    downloadLink.href = badgeCanvas.toDataURL();
+    downloadLink.download = "STEM_Advent_Calendar_Badge.png";
+
+    // Hide the badge after 10 seconds
+    setTimeout(() => {
+      badge.style.display = "none";
+      badge.innerHTML = ""; // Clear previous badge content
+    }, 10000);
   }
-  badgeCtx.restore();
-
-  // Tree logo (centered)
-  badgeCtx.beginPath();
-  badgeCtx.arc(badgeCanvas.width / 2, badgeCanvas.height / 2, 80, 0, Math.PI * 2);
-  badgeCtx.fillStyle = "#2ecc71"; // Tree color
-  badgeCtx.fill();
-  badgeCtx.closePath();
-
-  // Advent Calendar Text below the tree
-  badgeCtx.font = "22px Arial";
-  badgeCtx.fillStyle = "#ffcc00";
-  badgeCtx.fillText("Advent Calendar", badgeCanvas.width / 2, badgeCanvas.height / 2 + 90);
-
-  // Append badge canvas as an image inside the badge
-  const badgeImage = new Image();
-  badgeImage.src = badgeCanvas.toDataURL();
-  badgeImage.style.width = "100%";
-  badge.appendChild(badgeImage);
-
-  // Set the badge to download
-  downloadLink.href = badgeCanvas.toDataURL();
-  downloadLink.download = "STEM_Advent_Calendar_Badge.png";
-
-  // Hide the badge after 10 seconds
-  setTimeout(() => {
-    badge.style.display = "none";
-    badge.innerHTML = ""; // Clear previous badge content
-  }, 10000);
 }
 
     // Start the animation
