@@ -49,11 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
         3: { 
             type: "project",
             data: { 
-                title: "Make a Paper Snowflake",
                 picture: "assets/img/proj1.jpg",
-                description: "Fold paper into a triangle and cut shapes along the edges. Unfold to reveal your snowflake!",
                 description: "Build a balloon-powered car from recycled materials in this fun activity. You can even grab a friend, build two cars, and race them against each other!",
-                link: "https://youtu.be/RStgV8mA-gA?si=RxJxxZAeZptycVvr"
+                href: "https://youtu.be/RStgV8mA-gA?si=RxJxxZAeZptycVvr"
             }
         },
         4: { 
@@ -87,9 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
         6: { 
             type: "project",
             data: { 
-                title: "Decorate Christmas Cookies",
-                picture: "assets/img/project2.jpg",
-                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+                title: "Catapult Use in XVII Century",
+                picture: "assets/img/project2.jpeg",
+                description: "Catapults were mighty handy for pirates in the golden age of piracy (during the 17th century). And medieval knights used them centuries earlier for taking down massive castle walls. Even Greeks and Romans used catapults about 2,000 years ago! These simple machines are quite handy, as long as you know how to aim them! In this science activity you will try your hand at catapult technology. Can you predict where your cotton ball will land?", 
+                href: "https://youtu.be/aAuN5ZnL4yE?si=Ovysv-vtOggdiJVP"
             }
         },
         7: { 
@@ -123,8 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
         9: { 
             type: "project", 
             data: {
-                title: "Decorate Christmas Cookies", 
-                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+                description: 'With a few simple ingredients, you can create a "fire snake" that appears to grow out of nowhere in this fun experiment! Although it looks magical, no magic is involved—it is all because of a chemical reaction. Try it to find out how it works!',
+                picture: "assets/img/project3.jpeg",
+                href: "https://youtu.be/7xkbXPzBTHE?si=PR1PdiGBiZXZ_ool"
             }
         },
         10: { 
@@ -158,8 +158,9 @@ document.addEventListener('DOMContentLoaded', () => {
         12: { 
             type: "project", 
             data: { 
-                title: "Decorate Christmas Cookies", 
-                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+                description: "Have you ever wondered what a parachute and an open rain jacket have in common? They both trap air and slow you down when you move fast! In this activity, you design a parachute for a miniature action figure. Tissue paper or a plastic bag and a few strings is all it takes to make your figure into an expert skydiver.",
+                picture: "assets/img/project4.jpeg",
+                href: "https://youtu.be/6RA9x4wlnW8?si=Jmsl2AZFmrh1EEoF"
             }
         },
         13: { 
@@ -193,8 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
         15: { 
             type: "project", 
             data: { 
-                title: "Decorate Christmas Cookies", 
-                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+                description: "Ever wondered how DNA, the genetic blueprint of a life-form, can encode and pass on the information on how to grow and maintain that life-form? Just like a cookbook contains a complete recipe for a dish, DNA stores the recipe for the life of an organism. Although each human has a unique DNA sequence, the DNA in all of us is about 99.9% identical! In this activity, you will use pieces of candy to make a model for a short section of DNA—enough to get a sense of what DNA is like and how it encodes life.",
+                picture: "assets/img/project5.jpeg",
+                href: "https://youtu.be/dC9uuHoIgXk?si=Na8FPXWqhq-BJV1W"
             }
         },
         16: { 
@@ -228,8 +230,9 @@ document.addEventListener('DOMContentLoaded', () => {
         18: { 
             type: "project", 
             data: { 
-                title: "Decorate Christmas Cookies", 
-                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+                description: "What do you need to make a motor? Not much! In this quick activity, you will make a simple motor using nothing but a battery, magnet, and a piece of wire.",
+                picture: "assets/img/project6.jpeg",
+                href: "https://youtu.be/0DwHz0zRIGM?si=mmyThZdWxEaOvFYe "
             }
         },
         19: { 
@@ -263,8 +266,9 @@ document.addEventListener('DOMContentLoaded', () => {
         21: { 
             type: "project", 
             data: { 
-                title: "Decorate Christmas Cookies", 
-                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+                description: "Have you ever wondered how plants take up water from the soil? Water uptake in plants is quite complex and involves a process called osmosis. Osmosis makes the water from the soil move into the roots of the plant. But what drives the water from the soil into the plant cells? In this activity, you will do an experiment with potatoes to find out!",
+                picture: "assets/img/project3.jpg",
+                href: "https://youtu.be/uOaV81WuHqA?si=hwKfA5UhtWJ7E23y"
             }
         },
         22: { 
@@ -298,8 +302,9 @@ document.addEventListener('DOMContentLoaded', () => {
         24: { 
             type: "project", 
             data: { 
-                title: "Decorate Christmas Cookies", 
-                description: "Bake some sugar cookies and decorate them with frosting and sprinkles!" 
+                description: "We breathe a lot—roughly 12 to 16 times a minute for adults and even more for children! Have you ever wondered how the process of breathing works so smoothly? Our lungs allow us to inhale the oxygen our body needs, but they do much, much more. They also allow us to get rid of carbon dioxide, the waste product created in the body, and they play a vital role in singing, shouting and even giggling. In this activity you will make a model of a lung and use it to discover how air flows in and out of the lungs with ease.",
+                picture: "assets/img/project8.jpeg",
+                href: "https://youtu.be/WJ06mrNliC0?si=Pf2l25GPtwZDYn4a"
             }
         },
         25: { type: "final" },
@@ -339,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="p-3" style="user-select: none">
                 <h2 class="mb-3">Day ${dey}</h2>
                 <h5>${data.description}</h5>
-                <img src="${data.picture}" alt="Fun Fact Image" class="img-fluid rounded-4 my-3">
+                <img src="${data.picture}" alt="Fun Fact Image" class="img-fluid rounded-4 my-3"> </br>
                 <a href="https://youtu.be/RStgV8mA-gA?si=RxJxxZAeZptycVvr">Click Here For a Tutorial</a>
             </div>
         `;
